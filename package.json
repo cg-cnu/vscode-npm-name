@@ -1,12 +1,39 @@
 {
     "name": "vscode-npm-name",
     "displayName": "NPM Name",
-    "description": "Query and validate npm names",
+    "description": "Query and validate npm package name",
     "version": "0.0.1",
     "publisher": "cg-cnu",
     "engines": {
-        "vscode": "^1.17.0"
+        "vscode": "^1.16.0"
     },
+    "author": {
+        "email": "sreenivas9alapati@gmail.com",
+        "name": "Sreenivas Alapati",
+        "url": "https://twitter.com/cgcnu"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cg-cnu/vscode-npm-name"
+    },
+    "readme": "README.md",
+    "license": "MIT",
+    "bugs": {
+        "email": "sreenivas9alapati@gmail.com",
+        "url": "https://github.com/cg-cnu/vscode-npm-name/issues"
+    },
+    "galleryBanner": {
+        "theme": "dark"
+    },
+    "keywords": [
+        "npm",
+        "package",
+        "name",
+        "validate",
+        "query"
+    ],
+    "homepage": "https://github.com/cg-cnu/vscode-npm-name",
+    "icon": "icons/npm-name-128.png",
     "categories": [
         "Other"
     ],
