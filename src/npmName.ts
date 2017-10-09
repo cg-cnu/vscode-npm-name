@@ -6,21 +6,19 @@ import * as validate from 'validate-npm-package-name';
 export const activate = (context: vscode.ExtensionContext) => {
 
     let query = vscode.commands.registerCommand('npmName.query', () => {
-        // TODO: created by user @ 2017-10-8 12:53:34
-        // finetune these!
         const falseMsg = [
             "oops! 🤦‍",
             "Thats 'Taken 3' 🎦",
-            "Better luck next time 🤷",
-            "You just missed it! 🚌 🏃",
-            "You are late, Mate! Its gone! ⏳"
+            "Better luck next time 🤷🏾",
+            "You just missed it! 🚌💨 🏃💦",
+            "You are late, Mate! Its gone! ⏳ 🙄"
         ]
         const trueMsg = [
-            "You lucky...! 🙊",
-            "The princes is yours :princess:",
-            "Right on time ⏳",
-            "Congratulations!! You found it 👏",
-            "Get it while it last."
+            "You lucky...! 🙊😂",
+            "The 👸🏾 is yours 😊",
+            "Right on time 💣",
+            "Congratulations!! You found 🦄",
+            "Get it while it last ⏲️"
         ]
 
         // Ask user for the name
@@ -34,18 +32,21 @@ export const activate = (context: vscode.ExtensionContext) => {
             // validate 
             inputName = inputName.trim()
             // check availability
-            // TODO: created by user @ 2017-10-8 01:28:15
-            // multiple in one go ?
+            // TODO: created by salapati @ 2017-10-8 01:28:15
+            // multiple names in one go ?
             name(inputName).then(available => {
+                // if not available show message and return
                 if (!available) {
                     vscode.window.showInformationMessage(
                         falseMsg[Math.floor(Math.random() * falseMsg.length)])
                     return;
                 }
+                // if available 
                 // check validity
                 const validity = validate(inputName);
+                // if valid for old and new packages
                 if (validity.validForNewPackages && validity.validForOldPackages) {
-                    vscode.window.showInformationMessage(`${trueMsg[Math.floor(Math.random() * trueMsg.length)]} '${inputName}' is available`);
+                    vscode.window.showInformationMessage(`${trueMsg[Math.floor(Math.random() * trueMsg.length)]} '${inputName}' is available!`);
                     return;
                 }
                 // wrong ?
