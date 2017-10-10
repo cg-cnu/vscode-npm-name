@@ -25,40 +25,42 @@ export const activate = (context: vscode.ExtensionContext) => {
         vscode.window.showInputBox({
             ignoreFocusOut: true,
             placeHolder: 'Enter the package name!',
-        }).then(inputName => {
-            if (!inputName) {
+        }).then(input => {
+            if (!input) {
                 return;
             }
             // validate 
-            inputName = inputName.trim()
+            // FIXME: noticed by user @ 2017-10-11 01:19:20
+            // fails on ' ' as input
+            const inputNames = input.trim().split(',')
             // check availability
-            // TODO: created by salapati @ 2017-10-8 01:28:15
-            // multiple names in one go ?
-            name(inputName).then(available => {
-                // if not available show message and return
-                if (!available) {
-                    vscode.window.showInformationMessage(
-                        falseMsg[Math.floor(Math.random() * falseMsg.length)])
-                    return;
-                }
-                // if available 
-                // check validity
-                const validity = validate(inputName);
-                // if valid for old and new packages
-                if (validity.validForNewPackages && validity.validForOldPackages) {
-                    vscode.window.showInformationMessage(`${trueMsg[Math.floor(Math.random() * trueMsg.length)]} '${inputName}' is available!`);
-                    return;
-                }
-                // wrong ?
-                if (validity.validForNewPackages || validity.validForOldPackages) {
-                    vscode.window.showInformationMessage(`'${inputName}' has some issues. Check debug console!`);
-                    console.log(validity);
-                    return;
-                }
-            }).catch(err => {
-                console.log("Error requesting the package!")
-                console.log(err)
-            });
+            for (let inputName of inputNames) {
+                name(inputName).then(available => {
+                    // if not available show message and return
+                    if (!available) {
+                        vscode.window.showInformationMessage(
+                            `${falseMsg[Math.floor(Math.random() * falseMsg.length)]} -- '${inputName}' is not available 😞`)
+                        return;
+                    }
+                    // if available check validity
+                    const validity = validate(inputName);
+                    // if valid for old and new packages
+                    if (validity.validForNewPackages && validity.validForOldPackages) {
+                        vscode.window.showInformationMessage(
+                            `${trueMsg[Math.floor(Math.random() * trueMsg.length)]} -- '${inputName}' is available 😊`);
+                            return;
+                        }
+                    // if not vaid for any of the packages
+                    if (!validity.validForNewPackages || !validity.validForOldPackages) {
+                        vscode.window.showInformationMessage(`'${inputName}' has some issues. Check debug console!`);
+                        console.log(validity);
+                        return;
+                    }
+                }).catch(err => {
+                    console.log("Error requesting the package!")
+                    console.log(err)
+                });
+            }
         });
     });
     context.subscriptions.push(query);
