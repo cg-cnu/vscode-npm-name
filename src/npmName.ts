@@ -6,14 +6,14 @@ import * as validate from 'validate-npm-package-name';
 export const activate = (context: vscode.ExtensionContext) => {
 
     let query = vscode.commands.registerCommand('npmName.query', () => {
-        const falseMsg = [
+        const falseMsg: string[] = [
             "oops! 🤦‍",
             "Thats 'Taken 3' 🎦",
             "Better luck next time 🤷🏾",
             "You just missed it! 🚌💨 🏃💦",
             "You are late, Mate! Its gone! ⏳ 🙄"
         ]
-        const trueMsg = [
+        const trueMsg: string[] = [
             "You lucky...! 🙊😂",
             "The 👸🏾 is yours 😊",
             "Right on time 💣",
@@ -32,7 +32,7 @@ export const activate = (context: vscode.ExtensionContext) => {
             // validate 
             // FIXME: noticed by user @ 2017-10-11 01:19:20
             // fails on ' ' as input
-            const inputNames = input.trim().split(',')
+            const inputNames: string[] = input.trim().split(',')
             // check availability
             for (let inputName of inputNames) {
                 name(inputName).then(available => {
@@ -43,13 +43,13 @@ export const activate = (context: vscode.ExtensionContext) => {
                         return;
                     }
                     // if available check validity
-                    const validity = validate(inputName);
+                    const validity: any = validate(inputName);
                     // if valid for old and new packages
                     if (validity.validForNewPackages && validity.validForOldPackages) {
                         vscode.window.showInformationMessage(
                             `${trueMsg[Math.floor(Math.random() * trueMsg.length)]} -- '${inputName}' is available 😊`);
-                            return;
-                        }
+                        return;
+                    }
                     // if not vaid for any of the packages
                     if (!validity.validForNewPackages || !validity.validForOldPackages) {
                         vscode.window.showInformationMessage(`'${inputName}' has some issues. Check debug console!`);
