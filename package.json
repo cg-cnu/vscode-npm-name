@@ -2,7 +2,7 @@
     "name": "vscode-npm-name",
     "displayName": "NPM Name",
     "description": "Query and validate npm package name",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "cg-cnu",
     "engines": {
         "vscode": "^1.16.0"
@@ -21,9 +21,6 @@
     "bugs": {
         "email": "sreenivas9alapati@gmail.com",
         "url": "https://github.com/cg-cnu/vscode-npm-name/issues"
-    },
-    "galleryBanner": {
-        "theme": "dark"
     },
     "keywords": [
         "npm",
