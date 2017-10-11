@@ -35,7 +35,7 @@ export const activate = (context: vscode.ExtensionContext) => {
                 name(pkgName).then(available => {
                     // if not available show message and return
                     if (!available) {
-                        vscode.window.showInformationMessage(
+                        vscode.window.showErrorMessage(
                             `${falseMsg[Math.floor(Math.random() * falseMsg.length)]} -- '${pkgName}' is not available 😞`)
                         return;
                     }
@@ -49,7 +49,7 @@ export const activate = (context: vscode.ExtensionContext) => {
                     }
                     // if not vaid for any of the packages
                     if (!validity.validForNewPackages || !validity.validForOldPackages) {
-                        vscode.window.showInformationMessage(`'${pkgName}' has some issues. Check debug console!`);
+                        vscode.window.showWarningMessage(`'${pkgName}' has some issues. Check debug console!`);
                         // FIXME: noticed by user @ 2017-10-11 01:30:54
                         // find the better way to log to the output
                         console.log(`# NPM Name ####################`);
