@@ -1,8 +1,8 @@
 {
     "name": "vscode-npm-name",
     "displayName": "NPM Name",
-    "description": "Query and validate npm package name",
-    "version": "0.0.2",
+    "description": "Query and validate npm package names",
+    "version": "0.0.3",
     "publisher": "cg-cnu",
     "engines": {
         "vscode": "^1.16.0"

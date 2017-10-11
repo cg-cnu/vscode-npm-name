@@ -13,12 +13,13 @@
 
 * Check whether a package name is available on npm with [npm-name](https://github.com/sindresorhus/npm-name)
 * If available, will validate it with [validate-npm-package-name](https://github.com/npm/validate-npm-package-name)
-* With fun messages and emojis :heart_eyes:
+* Support multiple package names.
+* With fun messages and emojis 😍
 
 ### Issue/Feedback:
 
-log them in the [github issues](https://github.com/cg-cnu/vscode-npm-name/issues) or hit me on [twitter](https://twitter.com/CgCnu).
+log them in the [github issues](https://github.com/cg-cnu/vscode-npm-name/issues) or hit me on [twitter](https://twitter.com/cgcnu).
 
 ### Like it?:
 
-:star: this repo.
+⭐ this repo.
