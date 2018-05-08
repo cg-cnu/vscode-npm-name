@@ -69,8 +69,6 @@ export const activate = (context: vscode.ExtensionContext) => {
                 vscode.window.showWarningMessage(
                   `'${pkgName}' has some issues. Check debug console!`
                 );
-                // FIXME: noticed by user @ 2017-10-11 01:30:54
-                // find the better way to log to the output
                 console.log(`# NPM Name ####################`);
                 console.log(
                   `'${pkgName}' is not valid for the following reasons...`
