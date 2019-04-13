@@ -1,67 +1,67 @@
 {
-    "name": "vscode-npm-name",
-    "displayName": "NPM Name",
-    "description": "Query and validate npm package names",
-    "version": "0.0.3",
-    "publisher": "cg-cnu",
-    "engines": {
-        "vscode": "^1.16.0"
-    },
-    "author": {
-        "email": "sreenivas9alapati@gmail.com",
-        "name": "Sreenivas Alapati",
-        "url": "https://twitter.com/cgcnu"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/cg-cnu/vscode-npm-name"
-    },
-    "readme": "README.md",
-    "license": "MIT",
-    "bugs": {
-        "email": "sreenivas9alapati@gmail.com",
-        "url": "https://github.com/cg-cnu/vscode-npm-name/issues"
-    },
-    "keywords": [
-        "npm",
-        "package",
-        "name",
-        "validate",
-        "query"
-    ],
-    "homepage": "https://github.com/cg-cnu/vscode-npm-name",
-    "icon": "icons/npm-name-128.png",
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:npmName.query"
-    ],
-    "main": "./out/src/npmName",
-    "contributes": {
-        "commands": [
-            {
-                "command": "npmName.query",
-                "title": "NPM Name"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.5.2",
-        "vscode": "^1.1.5",
-        "mocha": "^3.5.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
-    },
-    "dependencies": {
-        "npm-name": "^3.1.0",
-        "validate-npm-package-name": "^3.0.0"
-    }
+  "name": "vscode-npm-name",
+  "displayName": "NPM Name",
+  "description": "Query and validate npm package names",
+  "version": "0.0.3",
+  "publisher": "cg-cnu",
+  "engines": {
+    "vscode": "^1.16.0"
+  },
+  "author": {
+    "email": "sreenivas9alapati@gmail.com",
+    "name": "Sreenivas Alapati",
+    "url": "https://twitter.com/cgcnu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cg-cnu/vscode-npm-name"
+  },
+  "readme": "README.md",
+  "license": "MIT",
+  "bugs": {
+    "email": "sreenivas9alapati@gmail.com",
+    "url": "https://github.com/cg-cnu/vscode-npm-name/issues"
+  },
+  "keywords": [
+    "npm",
+    "package",
+    "name",
+    "validate",
+    "query"
+  ],
+  "homepage": "https://github.com/cg-cnu/vscode-npm-name",
+  "icon": "icons/npm-name-128.png",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:npmName.query"
+  ],
+  "main": "./out/src/npmName",
+  "contributes": {
+    "commands": [
+      {
+        "command": "npmName.query",
+        "title": "NPM Name"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.3",
+    "vscode": "^1.1.33",
+    "mocha": "^6.1.3",
+    "@types/node": "^11.13.2",
+    "@types/mocha": "^5.2.6"
+  },
+  "dependencies": {
+    "npm-name": "^3.1.0",
+    "validate-npm-package-name": "^3.0.0"
+  }
 }
