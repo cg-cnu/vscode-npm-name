@@ -1,22 +1,16 @@
-on: push
-name: 'Release Vscode Plugin'
+on:
+  push:
+    branches:
+      - master
+name: Deploy Extension
 jobs:
-  npmInstall:
-    name: npm install
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: npm install
-        uses: actions/npm@master
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: lannonbr/vsce-action@master
         with:
-          args: install --unsafe-perm
-      - name: Master
-        uses: actions/bin/filter@master
-        with:
-          args: branch master
-      - name: Vscode release plugin
-        uses: JCofman/vscodeaction@master
+          args: "publish -p $VSCE_TOKEN"
         env:
-          PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
-        with:
-          args: publish -p $PUBLISHER_TOKEN
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
