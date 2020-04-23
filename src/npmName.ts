@@ -3,20 +3,20 @@ import * as vscode from "vscode";
 import * as name from "npm-name";
 import * as validate from "validate-npm-package-name";
 
-const getMessage = state => {
+const getMessage = (state) => {
   const falseMsg: string[] = [
     "oops! 🤦‍",
     "Thats 'Taken 3' 🎦",
     "Better luck next time 🤷🏾",
-    "You just missed it! 🚌💨 🏃💦",
-    "You are late, Mate! Its gone! ⏳ 🙄"
+    "You just missed it! 🚌💨 🏃",
+    "You are late, Mate! Its gone! ⏳ 🙄",
   ];
   const trueMsg: string[] = [
     "You lucky...! 🙊😂",
     "The 👸🏾 is yours 😊",
     "Right on time 💣",
     "Congratulations!! You found 🦄",
-    "Get it while it last ⏲️"
+    "Get it while it last ⏲️",
   ];
   const random = Math.floor(Math.random() * 5);
   return state === "Success" ? trueMsg[random] : falseMsg[random];
@@ -29,9 +29,9 @@ export const activate = (context: vscode.ExtensionContext) => {
       .showInputBox({
         ignoreFocusOut: true,
         placeHolder: "Enter package name.",
-        prompt: "Enter package name."
+        prompt: "Enter package name.",
       })
-      .then(input => {
+      .then((input) => {
         if (!input || input.trim() === " ") {
           return;
         }
@@ -39,7 +39,7 @@ export const activate = (context: vscode.ExtensionContext) => {
         // check availability
         for (let pkgName of pkgNames) {
           name(pkgName)
-            .then(available => {
+            .then((available) => {
               // if not available show message and return
               if (!available) {
                 vscode.window.showErrorMessage(
@@ -51,6 +51,7 @@ export const activate = (context: vscode.ExtensionContext) => {
               }
               // if available check validity
               const validity: any = validate(pkgName);
+
               // if valid for old and new packages
               if (
                 validity.validForNewPackages &&
@@ -69,18 +70,22 @@ export const activate = (context: vscode.ExtensionContext) => {
                 vscode.window.showWarningMessage(
                   `'${pkgName}' has some issues. Check debug console!`
                 );
-                console.log(`# NPM Name ####################`);
-                console.log(
-                  `'${pkgName}' is not valid for the following reasons...`
-                );
-                for (let warning of validity.warnings) {
-                  console.log(`* ${warning}`);
+                if (validity.warnings == undefined) {
+                  console.log("Not able to retrieve the reasons.");
+                } else {
+                  console.log("# NPM Name ####################");
+                  console.log(
+                    `'${pkgName}' is not valid for the following reasons...`
+                  );
+                  for (let warning of validity.warnings) {
+                    console.log(`* ${warning}`);
+                  }
+                  console.log("###############################");
                 }
-                console.log(`###############################`);
                 return;
               }
             })
-            .catch(err => {
+            .catch((err) => {
               console.log("Error requesting the package!");
               console.log(err);
             });
