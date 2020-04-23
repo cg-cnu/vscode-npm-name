@@ -5,8 +5,6 @@
     <br>
 </p>
 
-![Release Vscode Plugin](https://github.com/cg-cnu/vscode-npm-name/workflows/Release%20Vscode%20Plugin/badge.svg)
-
 ## Demo:
 
 <img src="https://user-images.githubusercontent.com/2767425/31459638-5c9e15c6-aee1-11e7-88ad-c909d1bba741.gif"/>
